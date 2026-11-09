@@ -1,0 +1,12 @@
+TripBuddy V1.4 - Existing Companion adverts.json format
+
+Your supplied adverts.json is already in advertising/adverts.json.
+Copy the image files referenced by its 'image' fields into the images/ folder, retaining the exact filenames, capitals, spaces and extensions.
+Example: images/Klook Mediterranean Adventures Banner.png
+Upload the contents of this ZIP to your TripBuddy GitHub repository, including advertising/ and images/.
+The banner rotates every 8 seconds, using rotationSeconds in adverts.json.
+The cruise-only advert is excluded from TripBuddy; target=all adverts are shown.
+No 1.5MB image limit is enforced in TripBuddy. Large images may take longer to load.
+Affiliate URLs are taken directly from your adverts.json.
+
+Note: This ZIP does not contain your banner images; copy them from your existing Companion app repository.

@@ -1,10 +1,10 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101c31"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon-192.png"><title>Elevor360D TripBuddy</title><style>
-:root{font-family:system-ui,Arial;color:#eef4ff;background:#0c1425}*{box-sizing:border-box}body{margin:0}header{background:#111e33;padding:14px 16px;border-bottom:1px solid #34445c;display:flex;align-items:center;gap:12px;flex-wrap:wrap}header img{width:70px;height:70px;object-fit:contain}h1{font-size:1.3rem;margin:0;color:#f2cf7b}small,.muted{color:#b9c6db}main{max-width:940px;margin:auto;padding:18px}nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}button,.btn{background:#d5ac58;border:0;border-radius:10px;color:#152035;padding:11px 14px;font-weight:700;cursor:pointer}button.secondary{background:#263a56;color:#f5f8ff}button.danger{background:#723b44;color:white}.panel{background:#16243a;border:1px solid #34445c;border-radius:15px;padding:17px;margin-bottom:15px}input,textarea,select{width:100%;padding:11px;margin:5px 0 13px;background:#0d1728;border:1px solid #52617b;color:white;border-radius:8px;font:inherit}label{font-size:.9rem;color:#dce5f5}textarea{min-height:85px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.item{background:#101d31;padding:13px;border-radius:11px;border:1px solid #40516b;margin:10px 0}.item h3{margin:0 0 7px;color:#f2cf7b}.actions{display:flex;gap:7px;flex-wrap:wrap}.hide{display:none!important}a{color:#f5d282}#advert img{max-width:100%;max-height:240px;object-fit:contain;border-radius:9px}footer{text-align:center;padding:20px;color:#b9c6db}#install{margin-left:auto}@media(max-width:550px){header img{width:54px;height:54px}#install{margin-left:0}}
+:root{font-family:system-ui,Arial;color:#eef4ff;background:#0c1425}*{box-sizing:border-box}body{margin:0}header{background:#111e33;padding:14px 16px;border-bottom:1px solid #34445c;display:flex;align-items:center;gap:12px;flex-wrap:wrap}header img{width:70px;height:70px;object-fit:contain}h1{font-size:1.3rem;margin:0;color:#f2cf7b}small,.muted{color:#b9c6db}main{max-width:940px;margin:auto;padding:18px}nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}button,.btn{background:#d5ac58;border:0;border-radius:10px;color:#152035;padding:11px 14px;font-weight:700;cursor:pointer}button.secondary{background:#263a56;color:#f5f8ff}button.danger{background:#723b44;color:white}.panel{background:#16243a;border:1px solid #34445c;border-radius:15px;padding:17px;margin-bottom:15px}input,textarea,select{width:100%;padding:11px;margin:5px 0 13px;background:#0d1728;border:1px solid #52617b;color:white;border-radius:8px;font:inherit}label{font-size:.9rem;color:#dce5f5}textarea{min-height:85px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.item{background:#101d31;padding:13px;border-radius:11px;border:1px solid #40516b;margin:10px 0}.item h3{margin:0 0 7px;color:#f2cf7b}.actions{display:flex;gap:7px;flex-wrap:wrap}.hide{display:none!important}a{color:#f5d282}#advert{text-align:center}#advert h2{margin:0 0 12px;color:#f2cf7b}#adBannerLink{display:block;margin:auto;max-width:100%}#advert img{display:block;width:100%;max-height:420px;object-fit:contain;border-radius:9px;margin:auto}#adText{margin:12px auto;color:#dce5f5}#adControls{display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap;margin-top:12px}#adCount{color:#b9c6db;font-size:.9rem}footer{text-align:center;padding:20px;color:#b9c6db}#install{margin-left:auto}@media(max-width:550px){header img{width:54px;height:54px}#install{margin-left:0}}
 </style></head><body><header><img src="brand-logo.png" alt="Elevor360D logo"><div><h1>TripBuddy Travel Companion</h1><small>Plan trips • Save places • Travel smarter</small></div><button id="install">Install App</button></header><main><nav><button data-tab="trips">My Trips</button><button data-tab="places" class="secondary">Saved Places</button><button data-tab="backup" class="secondary">Backup & Restore</button></nav>
 <section id="trips" class="tab"><div class="panel"><h2>Plan a trip</h2><form id="tripForm"><input type="hidden" id="tripId"><div class="grid"><div><label>Trip name<input id="tripName" required placeholder="Weekend in York"></label></div><div><label>Destination<input id="destination" required placeholder="York, England"></label></div><div><label>Start date<input type="date" id="start"></label></div><div><label>End date<input type="date" id="end"></label></div></div><label>Notes<textarea id="tripNotes" placeholder="Hotel, transport, itinerary..."></textarea></label><button type="submit">Save Trip</button> <button type="button" class="secondary" id="resetTrip">Clear</button></form></div><div class="panel"><h2>Your trips</h2><div id="tripList"></div></div></section>
 <section id="places" class="tab hide"><div class="panel"><h2>Save a place or event</h2><form id="placeForm"><input type="hidden" id="placeId"><div class="grid"><label>Name<input id="placeName" required placeholder="Museum or restaurant"></label><label>City / area<input id="placeCity" placeholder="Liverpool"></label><label>Type<select id="placeType"><option>Attraction</option><option>Restaurant</option><option>Accommodation</option><option>Event</option><option>Other</option></select></label><label>Trip<select id="placeTrip"><option value="">No trip</option></select></label></div><label>Address or website<input id="placeLink" placeholder="https://... or street address"></label><label>Notes<textarea id="placeNotes" placeholder="Opening times, booking details..."></textarea></label><button type="submit">Save Place</button> <button type="button" class="secondary" id="resetPlace">Clear</button></form></div><div class="panel"><h2>Saved places & events</h2><input id="search" placeholder="Search saved places"><div id="placeList"></div></div></section>
 <section id="backup" class="tab hide"><div class="panel"><h2>Backup & Restore</h2><p>Trip and place details are saved on this device. Download backups regularly, especially before clearing browser data.</p><button id="export">Download Backup</button><p><label>Restore a previous TripBuddy backup<input type="file" id="import" accept=".json,application/json"></label></p><p class="muted">Restoring replaces the currently saved trips and places on this device.</p></div></section>
-<div class="panel hide" id="advert"><h2 id="adTitle"></h2><img id="adImage" class="hide" alt="Advert"><p id="adText"></p><a id="adLink" target="_blank" rel="noopener noreferrer">Learn more</a></div><p class="muted">Travel planning works offline after installation. Live venue and event search is not included in this edition.</p></main><footer>Elevor360D • Free Travel Companion</footer><script>
+<div class="panel hide" id="advert"><h2 id="adTitle">Sponsored advertisement</h2><a id="adBannerLink" target="_blank" rel="noopener noreferrer" class="hide" aria-label="Open advertiser website"><img id="adImage" alt="Advertisement banner" loading="lazy"></a><img id="adFallbackImage" class="hide" alt="Advertisement banner" loading="lazy"><p id="adText"></p><a id="adLink" class="hide" target="_blank" rel="noopener noreferrer">Visit advertiser website</a><div id="adControls" class="hide"><button type="button" id="adPrev" class="secondary">Previous</button><span id="adCount" aria-live="polite"></span><button type="button" id="adNext" class="secondary">Next</button></div></div><p class="muted">Travel planning works offline after installation. Live venue and event search is not included in this edition.</p></main><footer>Elevor360D • Free Travel Companion</footer><script>
 const KEY='elevor360d-tripbuddy-v1';let db;try{db=JSON.parse(localStorage.getItem(KEY))}catch(e){}if(!db||!Array.isArray(db.trips)||!Array.isArray(db.places))db={trips:[],places:[]};const $=id=>document.getElementById(id),save=()=>{localStorage.setItem(KEY,JSON.stringify(db));render()};const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,8);
 function tab(id){document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('hide',x.id!==id));document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('secondary',x.dataset.tab!==id))}document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>tab(b.dataset.tab));
 function render(){ $('tripList').innerHTML=db.trips.length?db.trips.map(t=>`<div class="item"><h3>${esc(t.name)}</h3><div>${esc(t.destination)} · ${esc(t.start||'Date not set')} ${t.end?'to '+esc(t.end):''}</div><p>${esc(t.notes)}</p><div class="actions"><button class="secondary" data-edittrip="${t.id}">Edit</button><button class="danger" data-deltrip="${t.id}">Delete</button></div></div>`).join(''):'No trips saved yet.';
@@ -13,6 +13,70 @@ $('tripForm').onsubmit=e=>{e.preventDefault();const t={id:$('tripId').value||uid
 $('placeForm').onsubmit=e=>{e.preventDefault();const p={id:$('placeId').value||uid(),name:$('placeName').value.trim(),city:$('placeCity').value.trim(),type:$('placeType').value,trip:$('placeTrip').value,link:$('placeLink').value.trim(),notes:$('placeNotes').value};const i=db.places.findIndex(x=>x.id===p.id);if(i<0)db.places.push(p);else db.places[i]=p;$('placeForm').reset();$('placeId').value='';save()};$('resetPlace').onclick=()=>{$('placeForm').reset();$('placeId').value=''};$('search').oninput=render;
 document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;let id=b.dataset.edittrip;if(id){const t=db.trips.find(x=>x.id===id);if(!t)return;['id','name','destination','start','end','notes'].forEach(k=>$(k==='id'?'tripId':k==='name'?'tripName':k==='notes'?'tripNotes':k).value=t[k]||'');tab('trips');scrollTo(0,0)}id=b.dataset.deltrip;if(id&&confirm('Delete this trip?')){db.trips=db.trips.filter(t=>t.id!==id);db.places.forEach(p=>{if(p.trip===id)p.trip=''});save()}id=b.dataset.editplace;if(id){const p=db.places.find(x=>x.id===id);if(!p)return;const keys={id:'placeId',name:'placeName',city:'placeCity',type:'placeType',trip:'placeTrip',link:'placeLink',notes:'placeNotes'};Object.entries(keys).forEach(([k,v])=>$(v).value=p[k]||'');tab('places');scrollTo(0,0)}id=b.dataset.delplace;if(id&&confirm('Delete this place?')){db.places=db.places.filter(p=>p.id!==id);save()}});
 $('export').onclick=()=>{const blob=new Blob([JSON.stringify({app:'Elevor360D TripBuddy',version:1,...db},null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='tripbuddy-backup-'+new Date().toISOString().slice(0,10)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)};$('import').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const x=JSON.parse(await f.text());if(!Array.isArray(x.trips)||!Array.isArray(x.places))throw Error('Invalid TripBuddy backup');if(!confirm('Replace all saved trips and places with this backup?'))return;db={trips:x.trips,places:x.places};save();alert('Backup restored')}catch(err){alert('Could not restore backup: '+err.message)}finally{e.target.value=''}};
-async function advert(){try{const r=await fetch('advert-settings.json?ts='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('No advert');const a=await r.json();if(!a.enabled)return;$('adTitle').textContent=a.title||'';$('adText').textContent=a.description||'';if(a.image){$('adImage').src=a.image;$('adImage').classList.remove('hide')};if(a.url&&/^https?:\/\//i.test(a.url))$('adLink').href=a.url;else $('adLink').classList.add('hide');$('advert').classList.remove('hide')}catch(e){}}advert();
+// Companion-style adverts: advertising/adverts.json and images/ files.
+let adItems=[],adIndex=0,adTimer=null;
+const adURL=u=>typeof u==='string'&&/^https?:\/\//i.test(u.trim());
+function normaliseAds(data){
+  if(Array.isArray(data))return data;
+  if(!data||typeof data!=='object'||data.enabled===false)return [];
+  for(const key of ['adverts','advertisements','ads','banners','items'])if(Array.isArray(data[key]))return data[key];
+  return data.image||data.imageUrl||data.image_url?[data]:[];
+}
+function advertImagePath(raw){
+  if(!raw||typeof raw!=='string')return '';
+  const value=raw.trim();
+  if(adURL(value)||value.startsWith('data:'))return value;
+  if(value.startsWith('/'))return value;
+  if(value.startsWith('./'))return new URL(value,document.baseURI).href;
+  if(value.startsWith('images/')||value.startsWith('advertising/'))return new URL(value,document.baseURI).href;
+  // Existing Companion-style adverts.json typically stores image filenames.
+  return new URL('images/'+value,document.baseURI).href;
+}
+function showAdvert(index){
+  if(!adItems.length)return;
+  adIndex=(index+adItems.length)%adItems.length;
+  const a=adItems[adIndex],title=a.title||a.name||'Sponsored advertisement';
+  const image=a.image||a.imageUrl||a.image_url||a.banner||a.src||a.filename||a.file||'';
+  const link=a.url||a.link||a.linkUrl||a.targetUrl||a.destination||a.href||'';
+  $('adTitle').textContent=title;
+  $('adText').textContent=a.description||a.text||'';
+  $('adText').classList.toggle('hide',!a.description&&!a.text);
+  $('adBannerLink').classList.add('hide');$('adFallbackImage').classList.add('hide');
+  if(image){
+    const img=advertImagePath(image);
+    if(adURL(link)){$('adImage').src=img;$('adImage').alt=title;$('adBannerLink').href=link;$('adBannerLink').classList.remove('hide')}
+    else{$('adFallbackImage').src=img;$('adFallbackImage').alt=title;$('adFallbackImage').classList.remove('hide')}
+  }
+  $('adLink').classList.toggle('hide',!adURL(link));if(adURL(link))$('adLink').href=link;
+  $('adControls').classList.toggle('hide',adItems.length<2);
+  $('adCount').textContent=(adIndex+1)+' of '+adItems.length;
+  $('advert').classList.remove('hide');
+}
+async function advert(){
+  try{
+    const r=await fetch('advertising/adverts.json?ts='+Date.now(),{cache:'no-store'});
+    if(!r.ok)throw Error('Advertising file unavailable');
+    const data=await r.json();
+    adItems=normaliseAds(data).filter(a=>{
+      if(!a||a.enabled===false||a.active===false||a.status==='inactive')return false;
+      if(!(a.image||a.imageUrl||a.image_url||a.banner||a.src||a.filename||a.file))return false;
+      if(a.target==='cruise')return false;
+      if(a.target==='app'&&Array.isArray(a.appIds)&&!a.appIds.includes('tripbuddy-travel-companion'))return false;
+      const today=new Date().toISOString().slice(0,10);
+      if(a.start&&today<a.start.slice(0,10))return false;
+      if(a.end&&today>a.end.slice(0,10))return false;
+      return true;
+    });
+    if(adItems.length){
+      showAdvert(0);
+      const seconds=Number(data.rotationSeconds)||8;
+      if(adTimer)clearInterval(adTimer);
+      if(adItems.length>1)adTimer=setInterval(()=>showAdvert(adIndex+1),Math.max(3,seconds)*1000);
+    }
+  }catch(e){/* Offline or missing adverts: TripBuddy continues normally. */}
+}
+$('adPrev').onclick=()=>showAdvert(adIndex-1);
+$('adNext').onclick=()=>showAdvert(adIndex+1);
+advert();
 let deferred;const installed=()=>window.matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;function installVisibility(){$('install').classList.toggle('hide',installed())}window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferred=e;if(!installed())$('install').classList.remove('hide')});$('install').onclick=async()=>{if(deferred){deferred.prompt();await deferred.userChoice;deferred=null;installVisibility()}else alert('Use your browser menu and choose Install app or Add to Home screen.')};window.addEventListener('appinstalled',()=>{$('install').classList.add('hide');deferred=null});installVisibility();if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js').catch(()=>{});render();
 </script></body></html>
